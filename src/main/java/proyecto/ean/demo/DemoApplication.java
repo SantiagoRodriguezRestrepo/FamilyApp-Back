@@ -1,6 +1,6 @@
 package proyecto.ean.demo;
 
-import io.jsonwebtoken.JwtBuilder;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ public class DemoApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("familiapp/**").allowedOrigins(urlConsumidoresApiPermitidosSeparados).allowedMethods("GET", "POST", "DELETE");
+				registry.addMapping("/**").allowedOrigins(urlConsumidoresApiPermitidosSeparados).allowedMethods("GET", "POST", "DELETE");
 			}
 		};
 	}
