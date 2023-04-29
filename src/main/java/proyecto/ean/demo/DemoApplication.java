@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import proyecto.ean.demo.modelo.Usuario;
-import proyecto.ean.demo.servicios.ServicioObtenerToken;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -20,7 +18,7 @@ public class DemoApplication {
 
 	@Bean
 	public WebMvcConfigurer corsConfigure(){
-		String[] urlConsumidoresApiPermitidosSeparados = "http://localhost:3000".split(";");
+		String[] urlConsumidoresApiPermitidosSeparados = "http://localhost:3000/;http://localhost:3001/;https://localhost:3000/;https://localhost:3001/".split(";");
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
