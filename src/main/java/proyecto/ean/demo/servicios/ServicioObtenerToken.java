@@ -3,6 +3,7 @@ package proyecto.ean.demo.servicios;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import proyecto.ean.demo.modelo.Usuario;
@@ -49,8 +50,7 @@ public class ServicioObtenerToken {
     }
 
     private boolean validarContrasena(String contrasena, Usuario usu){
-
-        return contrasena.equals(usu.getContrasena());
+        return BCrypt.checkpw(contrasena, usu.getContrasena());
     }
 
     private String generearToken(Usuario usuario) throws NoSuchAlgorithmException {
