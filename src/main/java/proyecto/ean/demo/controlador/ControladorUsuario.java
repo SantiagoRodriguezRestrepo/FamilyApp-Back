@@ -3,6 +3,7 @@ package proyecto.ean.demo.controlador;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import proyecto.ean.demo.modelo.Usuario;
@@ -37,7 +38,7 @@ public class ControladorUsuario {
             @RequestParam(value = "tipoUsuario") int tipo,
             @ApiParam(value = "contrasena", required = true)
             @RequestParam(value = "contrasena") String contrasena){
-        Usuario usuario = new Usuario(idUsuario, nombre, apellido, tipo,contrasena);
+        Usuario usuario = new Usuario(idUsuario, nombre, apellido, tipo, encriptarContrasena(contrasena));
         this.usuarioService.registrar(usuario);
     }
 
@@ -47,6 +48,10 @@ public class ControladorUsuario {
             @ApiParam(value = "id usuario", required = true)
             @RequestParam(value = "idUsuario") String idUsuario){
         this.usuarioService.borrar(idUsuario);
+    }
+
+    private String encriptarContrasena(String contrasena){
+        return BCrypt.hashpw(contrasena, BCrypt.gensalt(10));
     }
 
 }
