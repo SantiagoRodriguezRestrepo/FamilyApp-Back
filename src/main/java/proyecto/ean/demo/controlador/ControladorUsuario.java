@@ -38,7 +38,7 @@ public class ControladorUsuario {
             @RequestParam(value = "tipoUsuario") int tipo,
             @ApiParam(value = "contrasena", required = true)
             @RequestParam(value = "contrasena") String contrasena){
-        Usuario usuario = new Usuario(idUsuario, nombre, apellido, tipo, encriptarContrasena(contrasena));
+        Usuario usuario = new Usuario(idUsuario, nombre, apellido, tipo, contrasena);
         this.usuarioService.registrar(usuario);
     }
 
@@ -49,9 +49,4 @@ public class ControladorUsuario {
             @RequestParam(value = "idUsuario") String idUsuario){
         this.usuarioService.borrar(idUsuario);
     }
-
-    private String encriptarContrasena(String contrasena){
-        return BCrypt.hashpw(contrasena, BCrypt.gensalt(10));
-    }
-
 }

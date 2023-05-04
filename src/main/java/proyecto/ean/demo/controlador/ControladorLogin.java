@@ -25,5 +25,4 @@ public class ControladorLogin {
             @RequestParam(required = true)String contrasena) throws Exception {
         return servicioObtenerToken.obtenerToken(idUsuario, contrasena);
     }
-
 }
