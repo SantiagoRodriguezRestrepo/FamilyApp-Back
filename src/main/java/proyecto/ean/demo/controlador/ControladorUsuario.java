@@ -14,14 +14,14 @@ import java.util.ArrayList;
 @Controller
 @ResponseBody
 @RequestMapping("familiapp/usuario")
-@Tag(name = "Controlador Usuario")
+@Tag(name = "Controlador Usuario", description = "permite realizar interaciones con usuarios")
 public class ControladorUsuario {
 
     @Autowired
     private UsuarioService usuarioService;
 
     @GetMapping()
-    @Operation(summary = "optener registro", description = "consulta los registros de una reclusa")
+    @Operation(summary = "Optener registro", description = "Consulta los registros de una reclusa")
     public ArrayList<Usuario> consultar(){
         return usuarioService.listar();
     }
@@ -44,7 +44,7 @@ public class ControladorUsuario {
     }
 
     @DeleteMapping()
-    @Operation(summary = "Eliminar registro", description = "permite eliminar un usuario deacuerdo a su ID")
+    @Operation(summary = "Eliminar registro", description = "Permite eliminar un usuario deacuerdo a su ID")
     public void eliminarRegistro(
             @Parameter(description = "id usuario", required = true)
             @RequestParam(value = "idUsuario") String idUsuario){

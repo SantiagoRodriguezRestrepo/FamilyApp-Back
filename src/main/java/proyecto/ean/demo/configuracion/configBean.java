@@ -16,10 +16,10 @@ public class configBean {
                 .info(new Info().title("Familiapp ")
                         .description("Carcel femenina familia")
                         .version("v0.0.1")
-                        .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+                        )
                 .externalDocs(new ExternalDocumentation()
-                        .description("SpringShop Wiki Documentation")
-                        .url("https://springshop.wiki.github.org/docs"));
+                        .description("Familiapp Wiki Documentation")
+                        );
     }
 
 }

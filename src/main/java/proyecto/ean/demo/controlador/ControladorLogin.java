@@ -20,7 +20,7 @@ public class ControladorLogin {
     private ServicioObtenerToken servicioObtenerToken;
 
     @PostMapping()
-    @Operation(summary = "login", description = "permite hacer logeo en la aplicacion")
+    @Operation(summary = "Login usuarios", description = "permite hacer logeo en la aplicacion")
     public ResponseEntity<ObjectNode> login(
             @Parameter(description = "idUsuario")
             @RequestParam(required = true)String idUsuario,
