@@ -15,7 +15,7 @@ public class UsuarioService{
     private IUsuarioRepository usuarioRepository;
 
     public ArrayList<Usuario> listar() {
-        return  (ArrayList<Usuario>) usuarioRepository.findAll();
+        return (ArrayList<Usuario>) usuarioRepository.findAll();
     }
 
     public Optional<Usuario> listarId(String idUsuario) {

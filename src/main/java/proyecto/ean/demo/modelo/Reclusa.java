@@ -22,7 +22,6 @@ public class Reclusa {
     @Column(name = "fk_usuario")
     private String representante;
 
-
     public Reclusa(String idReclusa, String nombre, String apellido, String representante) {
         this.idReclusa = idReclusa;
         this.nombre = nombre;
