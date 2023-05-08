@@ -2,12 +2,13 @@ package proyecto.ean.demo.interfaces;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import proyecto.ean.demo.modelo.Reclusa;
+import proyecto.ean.demo.modelo.Registro;
 
 import java.util.List;
 
 @Repository
-public interface IReclusaRepository extends JpaRepository<Reclusa, String> {
+public interface IRegistroRepository extends JpaRepository<Registro, Long> {
 
-    List<Reclusa> findByRepresentante(String idfamilar);
+    List<Registro> findByIdReclusa(String idReclusa);
+
 }

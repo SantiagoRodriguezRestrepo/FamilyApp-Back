@@ -15,23 +15,23 @@ public class ReclusaService {
     private IReclusaRepository reclusaRepository;
 
     public ArrayList<Reclusa> listar(){
-        return (ArrayList<Reclusa>) reclusaRepository.findAll();
+        return (ArrayList<Reclusa>) this.reclusaRepository.findAll();
     }
 
     public Optional<Reclusa> listarById(String idReclusa){
-        return reclusaRepository.findById(idReclusa);
+        return this.reclusaRepository.findById(idReclusa);
     }
 
     public void registrar(Reclusa reclusa){
-        reclusaRepository.save(reclusa);
+        this.reclusaRepository.save(reclusa);
     }
 
     public void eliminar(String idReclusa){
-        reclusaRepository.deleteById(idReclusa);
+        this.reclusaRepository.deleteById(idReclusa);
     }
 
     public List<Reclusa> listarPorFamiliar(String idFamiliar){
-        return reclusaRepository.findByRepresentante(idFamiliar);
+        return this.reclusaRepository.findByRepresentante(idFamiliar);
     }
 
 }

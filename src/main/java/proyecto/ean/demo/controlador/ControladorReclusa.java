@@ -50,7 +50,7 @@ public class ControladorReclusa {
     }
 
     @GetMapping("/consultar-familiar/{idFamiliar}")
-    @Operation(summary = "opener registros familiar", description = "permite optener el listado de las reclusas asociadas al familiar")
+    @Operation(summary = "opener registros por familiar", description = "permite optener el listado de las reclusas asociadas al familiar")
     public List<Reclusa> listarAsociadas(@PathVariable String idFamiliar){
         return this.reclusaService.listarPorFamiliar(idFamiliar);
     }
