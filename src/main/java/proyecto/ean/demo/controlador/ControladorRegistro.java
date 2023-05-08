@@ -53,7 +53,7 @@ public class ControladorRegistro {
             @Parameter(description = "comentario de registro", required = true)
             @RequestParam(value = "comentario") String comentario,
             @Parameter(description = "id reclusa", required = true)
-            @RequestParam(value = "idReclusa") String idReclusa){
+            @RequestParam(value = "idReclusa") String idReclusa) throws Exception {
         String ruta = this.guardarImagen.guardarImagen(adjunto, idReclusa);
         Registro registro = new Registro(ruta, titulo, comentario, LocalDateTime.now(), estado, idReclusa);
         this.registroService.registrar(registro);

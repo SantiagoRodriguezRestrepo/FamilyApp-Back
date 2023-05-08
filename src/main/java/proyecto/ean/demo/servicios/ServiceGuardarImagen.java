@@ -2,6 +2,7 @@ package proyecto.ean.demo.servicios;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import proyecto.ean.demo.configuracion.ManejoExcepcion;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,9 +17,9 @@ public class ServiceGuardarImagen {
     private static final String ERROR_GUARDADO = "Se presento un error al guardar la imagen";
     private static final String RUTA_GUARDADO = "D:\\familiapp\\registros\\";
 
-    public String guardarImagen(MultipartFile adjunto, String reclusa){
+    public String guardarImagen(MultipartFile adjunto, String reclusa) throws Exception {
         if (!validarFormatoImagen(adjunto)){
-             throw new RuntimeException(ARCHIVO_INVALIDO);
+            throw new IllegalArgumentException(ARCHIVO_INVALIDO);
         }
 
         try {
@@ -28,7 +29,7 @@ public class ServiceGuardarImagen {
             Files.write(path, bytes);
             return path.toString();
         } catch (IOException e){
-            throw new RuntimeException(ERROR_GUARDADO + " " + e);
+            throw new IllegalArgumentException(ERROR_GUARDADO);
         }
     }
 
@@ -38,7 +39,7 @@ public class ServiceGuardarImagen {
 
     private int numeroAleatorio(){
         Random random = new Random();
-        return random.nextInt(100000);
+        return random.nextInt(100);
     }
 
 }
