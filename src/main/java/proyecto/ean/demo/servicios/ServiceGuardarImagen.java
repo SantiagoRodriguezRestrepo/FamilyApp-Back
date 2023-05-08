@@ -41,5 +41,4 @@ public class ServiceGuardarImagen {
         Random random = new Random();
         return random.nextInt(100);
     }
-
 }

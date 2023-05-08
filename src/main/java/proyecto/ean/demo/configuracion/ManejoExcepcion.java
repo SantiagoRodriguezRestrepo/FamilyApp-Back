@@ -19,6 +19,4 @@ public class ManejoExcepcion{
                 .status(HttpStatus.BAD_REQUEST)
                 .body(respuesta);
     }
-
-
 }

@@ -20,7 +20,7 @@ import java.util.Optional;
 @Controller
 @ResponseBody
 @RequestMapping("familiapp/registro")
-@Tag(name = "controlador registro", description = "permite registrar una nueva imagen para reclusas")
+@Tag(name = "controlador Registro", description = "permite registrar una nueva imagen para reclusas")
 public class ControladorRegistro {
 
     @Autowired

@@ -13,7 +13,7 @@ import proyecto.ean.demo.servicios.ServicioObtenerToken;
 @RestController
 @Controller
 @RequestMapping("familiapp/login")
-@Tag(name = "Controlador login", description = "permite logearse en la aplicacion")
+@Tag(name = "Controlador Login", description = "permite logearse en la aplicacion")
 public class ControladorLogin {
 
     @Autowired
