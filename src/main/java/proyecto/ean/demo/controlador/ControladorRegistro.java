@@ -30,7 +30,7 @@ public class ControladorRegistro {
     private RegistroService registroService;
 
     @GetMapping()
-    @Operation(summary = "lista todos los registros", description = "Permite optener todos los regisotros guardados")
+    @Operation(summary = "Lista todos los registros", description = "Permite optener todos los regisotros guardados")
     public ArrayList<Registro> listar(){
         return this.registroService.listar();
     }
@@ -42,7 +42,7 @@ public class ControladorRegistro {
     }
 
     @PostMapping()
-    @Operation(summary = "guardar nuevo registro", description = "Permite guardar un nuevo registro para reclusa")
+    @Operation(summary = "Guardar nuevo registro", description = "Permite guardar un nuevo registro para reclusa")
     public void guardarRegistro(
             @Parameter(description = "adjunto", required = true)
             @RequestParam(value = "adjunto")MultipartFile adjunto,
@@ -60,7 +60,7 @@ public class ControladorRegistro {
     }
 
     @GetMapping("/reclusa/{idReclusa}")
-    @Operation(summary = "optener registros por recluso", description = "optiene todo los registros asociados a una reclusa")
+    @Operation(summary = "Optener registros por recluso", description = "optiene todo los registros asociados a una reclusa")
     public List<Registro> listarAsociados(@PathVariable String idReclusa){
         return this.registroService.buscarPorIdReclusa(idReclusa);
     }

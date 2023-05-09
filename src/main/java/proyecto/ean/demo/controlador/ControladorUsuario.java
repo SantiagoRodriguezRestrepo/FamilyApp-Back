@@ -37,7 +37,7 @@ public class ControladorUsuario {
             @RequestParam(value = "apellido") String apellido,
             @Parameter(description = "tipoUsuario", required = true)
             @RequestParam(value = "tipoUsuario") int tipo,
-            @Parameter(description = "contrasena", required = true)
+            @Parameter(description = "contrasena encripta", required = true)
             @RequestParam(value = "contrasena") String contrasena){
         Usuario usuario = new Usuario(idUsuario, nombre, apellido, tipo, contrasena);
         this.usuarioService.registrar(usuario);

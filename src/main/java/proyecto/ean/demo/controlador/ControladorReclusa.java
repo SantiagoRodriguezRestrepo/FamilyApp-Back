@@ -35,7 +35,7 @@ public class ControladorReclusa {
     }
 
     @PostMapping()
-    @Operation(summary = "crear reclusa", description = "permite registrar una nueva reclusa")
+    @Operation(summary = "Crear reclusa", description = "permite registrar una nueva reclusa")
     public void guardarReclusa(
             @Parameter(description = "id reclusa", required = true)
             @RequestParam(value = "idReclusa") String idReclusa,
@@ -50,7 +50,7 @@ public class ControladorReclusa {
     }
 
     @GetMapping("/consultar-familiar/{idFamiliar}")
-    @Operation(summary = "opener registros por familiar", description = "permite optener el listado de las reclusas asociadas al familiar")
+    @Operation(summary = "Optener registros por familiar", description = "permite optener el listado de las reclusas asociadas al familiar")
     public List<Reclusa> listarAsociadas(@PathVariable String idFamiliar){
         return this.reclusaService.listarPorFamiliar(idFamiliar);
     }
