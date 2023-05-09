@@ -29,15 +29,15 @@ public class ControladorUsuario {
     @PostMapping()
     @Operation(summary = "Guardar registro", description = "Permite registrar un nuevo usuario")
     public void guardarUsuario(
-            @Parameter(description = "id usuario", required = true)
+            @Parameter(description = "Id usuario", required = true)
             @RequestParam(value = "idUsuario") String idUsuario,
-            @Parameter(description = "nombre del usuario", required = true)
+            @Parameter(description = "Nombre del usuario", required = true)
             @RequestParam(value = "nombre") String nombre,
-            @Parameter(description = "apellido del usuario", required = true)
+            @Parameter(description = "Apellido del usuario", required = true)
             @RequestParam(value = "apellido") String apellido,
-            @Parameter(description = "tipoUsuario", required = true)
+            @Parameter(description = "TipoUsuario", required = true)
             @RequestParam(value = "tipoUsuario") int tipo,
-            @Parameter(description = "contrasena encripta", required = true)
+            @Parameter(description = "Contraseña encripta", required = true)
             @RequestParam(value = "contrasena") String contrasena){
         Usuario usuario = new Usuario(idUsuario, nombre, apellido, tipo, contrasena);
         this.usuarioService.registrar(usuario);
@@ -46,7 +46,7 @@ public class ControladorUsuario {
     @DeleteMapping()
     @Operation(summary = "Eliminar registro", description = "Permite eliminar un usuario deacuerdo a su ID")
     public void eliminarRegistro(
-            @Parameter(description = "id usuario", required = true)
+            @Parameter(description = "Id usuario", required = true)
             @RequestParam(value = "idUsuario") String idUsuario){
         this.usuarioService.borrar(idUsuario);
     }

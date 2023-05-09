@@ -37,13 +37,13 @@ public class ControladorReclusa {
     @PostMapping()
     @Operation(summary = "Crear reclusa", description = "permite registrar una nueva reclusa")
     public void guardarReclusa(
-            @Parameter(description = "id reclusa", required = true)
+            @Parameter(description = "Id reclusa", required = true)
             @RequestParam(value = "idReclusa") String idReclusa,
-            @Parameter(description = "nombre reclusa", required = true)
+            @Parameter(description = "Nombre reclusa", required = true)
             @RequestParam(value = "nombre") String nombre,
-            @Parameter(description = "apellido reclusa", required = true)
+            @Parameter(description = "Apellido reclusa", required = true)
             @RequestParam(value = "apellido") String apellido,
-            @Parameter(description = "id familiar", required = true)
+            @Parameter(description = "Id familiar", required = true)
             @RequestParam(value = "idFamiliar") String idFamiliar){
         Reclusa reclusa = new Reclusa(idReclusa, nombre, apellido,idFamiliar);
         this.reclusaService.registrar(reclusa);

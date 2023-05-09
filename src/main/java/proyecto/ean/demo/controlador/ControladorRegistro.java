@@ -44,15 +44,15 @@ public class ControladorRegistro {
     @PostMapping()
     @Operation(summary = "Guardar nuevo registro", description = "Permite guardar un nuevo registro para reclusa")
     public void guardarRegistro(
-            @Parameter(description = "adjunto", required = true)
+            @Parameter(description = "Adjunto", required = true)
             @RequestParam(value = "adjunto")MultipartFile adjunto,
-            @Parameter(description = "titulo imagen", required = true)
+            @Parameter(description = "Titulo imagen", required = true)
             @RequestParam(value = "titulo") String titulo,
-            @Parameter(description = "estado", required = true)
+            @Parameter(description = "Estado", required = true)
             @RequestParam(value = "estado") int estado,
-            @Parameter(description = "comentario de registro", required = true)
+            @Parameter(description = "Comentario de registro", required = true)
             @RequestParam(value = "comentario") String comentario,
-            @Parameter(description = "id reclusa", required = true)
+            @Parameter(description = "Id reclusa", required = true)
             @RequestParam(value = "idReclusa") String idReclusa) throws Exception {
         String ruta = this.guardarImagen.guardarImagen(adjunto, idReclusa);
         Registro registro = new Registro(ruta, titulo, comentario, LocalDateTime.now(), estado, idReclusa);
