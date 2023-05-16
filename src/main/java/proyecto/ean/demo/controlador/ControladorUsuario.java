@@ -21,7 +21,7 @@ public class ControladorUsuario {
     private UsuarioService usuarioService;
 
     @GetMapping()
-    @Operation(summary = "Optener registro", description = "Consulta los registros de una reclusa")
+    @Operation(summary = "Obtener registro", description = "Consulta los registros de una reclusa")
     public ArrayList<Usuario> consultar(){
         return usuarioService.listar();
     }

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.Random;
 
 @Component
@@ -15,7 +16,7 @@ public class ServiceGuardarImagen {
 
     private static final String ARCHIVO_INVALIDO= "El archivo debe ser una imagen";
     private static final String ERROR_GUARDADO = "Se presento un error al guardar la imagen";
-    private static final String RUTA_GUARDADO = "C:\\familiapp\\registro";
+    private static final String RUTA_GUARDADO = "C:\\familiapp\\FamilyApp-Front\\public";
 
     public String guardarImagen(MultipartFile adjunto, String reclusa) throws Exception {
         if (!validarFormatoImagen(adjunto)){
@@ -25,7 +26,7 @@ public class ServiceGuardarImagen {
         try {
             byte[] bytes = adjunto.getBytes();
             int random = numeroAleatorio();
-            Path path = Paths.get(RUTA_GUARDADO + reclusa + "-" + random + adjunto.getOriginalFilename());
+            Path path = Paths.get(RUTA_GUARDADO + reclusa + "-" + random + adjunto.getOriginalFilename()); //nombre del archivo a guardar
             Files.write(path, bytes);
             return path.toString();
         } catch (IOException e){
@@ -34,7 +35,7 @@ public class ServiceGuardarImagen {
     }
 
     private boolean validarFormatoImagen(MultipartFile adjunto){
-        return adjunto.getContentType().startsWith("image/");
+        return Objects.requireNonNull(adjunto.getContentType()).startsWith("image/");
     }
 
     private int numeroAleatorio(){
