@@ -16,7 +16,7 @@ public class ServiceGuardarImagen {
 
     private static final String ARCHIVO_INVALIDO= "El archivo debe ser una imagen";
     private static final String ERROR_GUARDADO = "Se presento un error al guardar la imagen";
-    private static final String RUTA_GUARDADO = "C:\\familiapp\\FamilyApp-Front\\public\\img";
+    private static final String RUTA_GUARDADO = "C:\\familiapp\\FamilyApp-Front\\public\\img\\";
 
     public String guardarImagen(MultipartFile adjunto, String reclusa) throws Exception {
         if (!validarFormatoImagen(adjunto)){
