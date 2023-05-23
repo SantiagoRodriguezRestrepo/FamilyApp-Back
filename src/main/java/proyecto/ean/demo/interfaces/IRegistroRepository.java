@@ -11,4 +11,6 @@ public interface IRegistroRepository extends JpaRepository<Registro, Long> {
 
     List<Registro> findByIdReclusa(String idReclusa);
 
+    void deleteByIdReclusa(String idreclusa);
+
 }

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ManejoExcepcion{
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ObjectNode> handleIllegalArgumentException(IllegalArgumentException e) {
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ObjectNode> handleRuntimeException(RuntimeException e) {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode respuesta = mapper.createObjectNode();
         respuesta.put("Error", e.getMessage());

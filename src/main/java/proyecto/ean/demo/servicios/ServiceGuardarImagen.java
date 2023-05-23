@@ -20,7 +20,7 @@ public class ServiceGuardarImagen {
 
     public String guardarImagen(MultipartFile adjunto, String reclusa) throws Exception {
         if (!validarFormatoImagen(adjunto)){
-            throw new IllegalArgumentException(ARCHIVO_INVALIDO);
+            throw new RuntimeException(ARCHIVO_INVALIDO);
         }
 
         try {
@@ -30,7 +30,7 @@ public class ServiceGuardarImagen {
             Files.write(path, bytes);
             return path.toString();
         } catch (IOException e){
-            throw new IllegalArgumentException(ERROR_GUARDADO);
+            throw new RuntimeException(ERROR_GUARDADO);
         }
     }
 
