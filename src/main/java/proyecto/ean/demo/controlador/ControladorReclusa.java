@@ -1,9 +1,12 @@
 package proyecto.ean.demo.controlador;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import proyecto.ean.demo.modelo.Reclusa;
@@ -36,7 +39,7 @@ public class ControladorReclusa {
 
     @PostMapping()
     @Operation(summary = "Crear reclusa", description = "permite registrar una nueva reclusa")
-    public void guardarReclusa(
+    public ResponseEntity<ObjectNode> guardarReclusa(
             @Parameter(description = "Id reclusa", required = true)
             @RequestParam(value = "idReclusa") String idReclusa,
             @Parameter(description = "Nombre reclusa", required = true)
@@ -46,7 +49,7 @@ public class ControladorReclusa {
             @Parameter(description = "Id familiar", required = true)
             @RequestParam(value = "idFamiliar") String idFamiliar){
         Reclusa reclusa = new Reclusa(idReclusa, nombre, apellido,idFamiliar);
-        this.reclusaService.registrar(reclusa);
+        return this.reclusaService.registrar(reclusa);
     }
 
     @GetMapping("/consultar-familiar/{idFamiliar}")
@@ -57,8 +60,8 @@ public class ControladorReclusa {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Eliminar registro reclusa", description = "borrar el registro de una reclusa por id")
-    public void eliminarReclusa(@PathVariable String id){
-        this.reclusaService.eliminar(id);
+    public ResponseEntity<ObjectNode> eliminarReclusa(@PathVariable String id){
+        return this.reclusaService.eliminar(id);
     }
 
 }

@@ -1,9 +1,11 @@
 package proyecto.ean.demo.controlador;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import proyecto.ean.demo.modelo.Usuario;
@@ -28,7 +30,7 @@ public class ControladorUsuario {
 
     @PostMapping()
     @Operation(summary = "Guardar registro", description = "Permite registrar un nuevo usuario")
-    public void guardarUsuario(
+    public ResponseEntity<ObjectNode> guardarUsuario(
             @Parameter(description = "Id usuario", required = true)
             @RequestParam(value = "idUsuario") String idUsuario,
             @Parameter(description = "Nombre del usuario", required = true)
@@ -40,14 +42,14 @@ public class ControladorUsuario {
             @Parameter(description = "Contraseña encripta", required = true)
             @RequestParam(value = "contrasena") String contrasena){
         Usuario usuario = new Usuario(idUsuario, nombre, apellido, tipo, contrasena);
-        this.usuarioService.registrar(usuario);
+        return this.usuarioService.registrar(usuario);
     }
 
     @DeleteMapping()
     @Operation(summary = "Eliminar registro", description = "Permite eliminar un usuario deacuerdo a su ID")
-    public void eliminarRegistro(
+    public ResponseEntity<ObjectNode> eliminarRegistro(
             @Parameter(description = "Id usuario", required = true)
             @RequestParam(value = "idUsuario") String idUsuario){
-        this.usuarioService.borrar(idUsuario);
+        return this.usuarioService.borrar(idUsuario);
     }
 }

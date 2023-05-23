@@ -1,9 +1,11 @@
 package proyecto.ean.demo.controlador;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,7 +45,7 @@ public class ControladorRegistro {
 
     @PostMapping()
     @Operation(summary = "Guardar nuevo registro", description = "Permite guardar un nuevo registro para reclusa")
-    public void guardarRegistro(
+    public ResponseEntity<ObjectNode> guardarRegistro(
             @Parameter(description = "Adjunto", required = true)
             @RequestParam(value = "adjunto")MultipartFile adjunto,
             @Parameter(description = "Titulo imagen", required = true)
@@ -56,7 +58,7 @@ public class ControladorRegistro {
             @RequestParam(value = "idReclusa") String idReclusa) throws Exception {
         String ruta = this.guardarImagen.guardarImagen(adjunto, idReclusa);
         Registro registro = new Registro(ruta, titulo, comentario, LocalDateTime.now(), estado, idReclusa);
-        this.registroService.registrar(registro);
+        return this.registroService.registrar(registro);
     }
 
     @GetMapping("/reclusa/{idReclusa}")
@@ -67,8 +69,8 @@ public class ControladorRegistro {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Eliminar registro", description = "permite eliminar un registro")
-    public void eliminarRegistro(@PathVariable Long id){
-        this.registroService.eliminar(id);
+    public ResponseEntity<ObjectNode> eliminarRegistro(@PathVariable Long id){
+        return this.registroService.eliminar(id);
     }
 
 }
