@@ -9,6 +9,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import proyecto.ean.demo.modelo.Usuario;
 import proyecto.ean.demo.servicios.usuario.UsuarioService;
 
@@ -18,11 +19,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Optional;
 
-@Component
+@Service
 public class ServicioObtenerToken {
 
     @Autowired
-    private UsuarioService usuarioService = new UsuarioService();
+    private UsuarioService usuarioService;
 
     private final String NO_AUTORIZADO = "Error de autenticacion";
     private final int EXPIRACION = 3600000;
